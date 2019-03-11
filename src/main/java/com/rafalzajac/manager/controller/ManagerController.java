@@ -67,16 +67,16 @@ public class ManagerController {
     }
 
     // Profil też dopiero do utworzenia
-    @GetMapping("profile")
-    public String viewProfile(Model model) {
+//    @GetMapping("profile")
+//    public String viewProfile(Model model) {
+//
+//        List<Player> list = (List<Player>) playerRepository.findAll();
+//        model.addAttribute("lastObject", list.get(list.size() - 1));
+//
+//        return "profile";
+//    }
 
-        List<Player> list = (List<Player>) playerRepository.findAll();
-        model.addAttribute("lastObject", list.get(list.size() - 1));
-
-        return "profile";
-    }
-
-    @GetMapping
+    @GetMapping("login")
     public String login(){
         return "auth/login";
     }
