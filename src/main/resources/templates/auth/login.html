@@ -3,13 +3,12 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>login page </title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <head th:replace="layouts/mainlayout :: head(title = 'Login page')"/>
 </head>
 <body>
 
-<p id="description">
-    asdas
-</p>
+<ul th:replace="layouts/mainlayout :: nav"/>
+
 
 <div align="center" class="mainBody">
 
@@ -45,5 +44,6 @@
     </form>
 </div>
 
+<footer th:replace="layouts/mainlayout :: footer"/>
 </body>
 </html>

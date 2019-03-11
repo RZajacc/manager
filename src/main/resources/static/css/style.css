@@ -1,14 +1,14 @@
-#description {
-    margin-left: 25%;
-    margin-right: 25%;
+.description {
+    margin-left: 15%;
+    margin-right: 15%;
     margin-top: 20px;
+    text-align: justify;
 }
 
-/*#footer {*/
-    /*background-color: #f2f2f2;*/
-    /*position: fixed;*/
+#contact {
+    text-align: center;
+}
 
-/*}*/
 footer {
     background-color: #f2f2f2;
     position: fixed;
@@ -22,4 +22,11 @@ footer {
 
 body {
     margin-bottom: 5%;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+
+nav {
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 18px;
 }

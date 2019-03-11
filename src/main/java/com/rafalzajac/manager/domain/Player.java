@@ -1,8 +1,10 @@
 package com.rafalzajac.manager.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,7 +13,9 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Getter @Setter
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Player {
 
     //Pomysl nad dodaniem opcji czy ma managera, kto to jest i ew kontakt
@@ -31,7 +35,6 @@ public class Player {
     private int block_height;
     private String current_club;
     private String contract_expires;
-
 
 
     @Override
