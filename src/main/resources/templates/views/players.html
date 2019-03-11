@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="~{/layouts/MainLayout :: head(title = 'Players list')}"/>
+</head>
+<body>
+
+<ul th:replace="~{/layouts/MainLayout :: nav}"/>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container" style="height: 80px">
+        <div class="container text-center" >
+
+            <h3>Search players by position:</h3>
+
+            <form action="home" method="get">
+
+                <select name="position">
+                    <option value="All">All Players</option>
+                    <option value="Wing Spiker">Wing Spiker</option>
+                    <option value="Setter">Setter</option>
+                    <option value="Middle Blocker">Middle Blocker</option>
+                    <option value="Opposite">Opposite</option>
+                    <option value="Libero">Libero</option>
+                </select>
+
+
+                <input class="btn btn-info" type="submit" value="Search">
+
+                <a class="btn btn-warning" th:href="addplayer" role="button">Add new</a>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <table class="table table-hover">
+
+        <tr>
+            <th>id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Position</th>
+            <th>Age</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Spike height</th>
+            <th>Block height</th>
+            <th>Current club</th>
+            <th>Contract expires</th>
+        </tr>
+
+        <tr th:each="player : ${players}">
+            <td th:text="${player.id}">dadd</td>
+            <td th:text="${player.first_name}">2525</td>
+            <td th:text="${player.last_name}">sdfs</td>
+            <td th:text="${player.position}">2525</td>
+            <td th:text="${player.age}">dadd</td>
+            <td th:text="${player.height}">2525</td>
+            <td th:text="${player.weight}">sdfs</td>
+            <td th:text="${player.spike_height}">dadd</td>
+            <td th:text="${player.block_height}">2525</td>
+            <td th:text="${player.current_club}" >sdfs</td>
+            <td th:text="${player.contract_expires}">dadd</td>
+        </tr>
+    </table>
+</div>
+
+<footer th:replace="~{/layouts/MainLayout :: footer}"/>
+
+</body>
+</html>
