@@ -20,10 +20,6 @@ public class ManagerController {
         this.playerRepository = playerRepository;
     }
 
-    @GetMapping("home")
-    public String home(){
-        return "home";
-    }
 
 
     @GetMapping("players")
@@ -45,13 +41,16 @@ public class ManagerController {
         return "views/contact";
     }
 
+
+
+//    @GetMapping("addplayer")
+//    public String addNewPlayer(Model model) {
+//        Player player = new Player();
+//        model.addAttribute("player", player);
+//        return "addplayer";
+//    }
+
     // To jakoś trzeba będzie przerobić na rejestrację
-    @GetMapping("addplayer")
-    public String addNewPlayer(Model model) {
-        Player player = new Player();
-        model.addAttribute("player", player);
-        return "addplayer";
-    }
 
     @PostMapping("addplayer")
     public String process(@ModelAttribute Player player, Model model) {
@@ -75,11 +74,6 @@ public class ManagerController {
 //
 //        return "profile";
 //    }
-
-    @GetMapping("login")
-    public String login(){
-        return "auth/login";
-    }
 
 
 }
