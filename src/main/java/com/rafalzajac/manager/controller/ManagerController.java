@@ -2,6 +2,7 @@ package com.rafalzajac.manager.controller;
 
 import com.rafalzajac.manager.domain.Player;
 import com.rafalzajac.manager.repositories.PlayerRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
+@Slf4j
 public class ManagerController {
 
     private final PlayerRepository playerRepository;
@@ -23,7 +25,17 @@ public class ManagerController {
 
 
     @GetMapping("players")
-    public String getAllPlayers(@RequestParam(value = "position", required = false, defaultValue = "All") String position, Model model) {
+    public String viewPlayers(Model model) {
+
+        String position = "All";
+        List<Player> list = (List<Player>) playerRepository.findAll();
+        model.addAttribute("players", list);
+
+        return "views/players";
+    }
+
+    @PostMapping("players")
+    public String showSelected(Model model, @RequestParam String position) {
 
         if (position.equals("All")) {
             List<Player> list = (List<Player>) playerRepository.findAll();
@@ -74,6 +86,7 @@ public class ManagerController {
 //
 //        return "profile";
 //    }
+
 
 
 }

@@ -14,11 +14,11 @@
             <h3>Search for a player's by:</h3>
 
 
-            <form class="form-inline justify-content-center" action="home" method="get">
+            <form class="form-inline justify-content-center"  method="post" th:action="players">
                 <label class="my-1 mx-2" for="inlineFormCustomSelectPref">Position</label>
                 <select class="custom-select my-1 mx-sm-2" id="inlineFormCustomSelectPref">
                     <option selected value="All">All Players</option>
-                    <option value="Wing Spiker">Wing Spiker</option>
+                    <option value="Wing Spiker" name="position">Wing Spiker</option>
                     <option value="Setter">Setter</option>
                     <option value="Middle Blocker">Middle Blocker</option>
                     <option value="Opposite">Opposite</option>
