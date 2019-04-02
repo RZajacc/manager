@@ -4,6 +4,8 @@ import com.rafalzajac.manager.domain.Player;
 import com.rafalzajac.manager.repositories.PlayerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlayerService {
 
@@ -13,7 +15,8 @@ public class PlayerService {
         this.playerRepository = playerRepository;
     }
 
-    public Player findByPosition(String position){
+    public List<Player> findByPosition(String position){
         return playerRepository.findByPosition(position);
     }
+
 }

@@ -18,7 +18,6 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 public class Player {
 
-    //Pomysl nad dodaniem opcji czy ma managera, kto to jest i ew kontakt
 
     @Id
     @GeneratedValue

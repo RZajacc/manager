@@ -13,20 +13,30 @@
 
             <h3>Search for a player's by:</h3>
 
-
-            <form class="form-inline justify-content-center"  method="post" th:action="players">
+            <form class="form-inline justify-content-center" method="GET" th:action="@{/players}" th:object="${SelectedPosition}">
                 <label class="my-1 mx-2" for="inlineFormCustomSelectPref">Position</label>
-                <select class="custom-select my-1 mx-sm-2" id="inlineFormCustomSelectPref">
-                    <option selected value="All">All Players</option>
-                    <option value="Wing Spiker" name="position">Wing Spiker</option>
-                    <option value="Setter">Setter</option>
-                    <option value="Middle Blocker">Middle Blocker</option>
-                    <option value="Opposite">Opposite</option>
-                    <option value="Libero">Libero</option>
+                <select class="custom-select my-1 mx-sm-2" id="inlineFormCustomSelectPref" th:field="*{position}">
+                    <option th:each="position : ${positions}"
+                            th:text="${position.getPosition()}"
+                            th:value="${position.getPosition()}"
+                    </option>
                 </select>
-
                 <button type="submit" class="btn btn-primary my-1" value="Search">Search</button>
             </form>
+
+<!--            <form class="form-inline justify-content-center"  method="POST" th:action="@{/players}">-->
+<!--                <label class="my-1 mx-2" for="inlineFormCustomSelectPref">Position</label>-->
+<!--                <select class="custom-select my-1 mx-sm-2" id="inlineFormCustomSelectPref">-->
+<!--                    <option selected value="All">All Players</option>-->
+<!--                    <option value="Wing Spiker">Wing Spiker</option>-->
+<!--                    <option value="Setter">Setter</option>-->
+<!--                    <option value="Middle Blocker">Middle Blocker</option>-->
+<!--                    <option value="Opposite">Opposite</option>-->
+<!--                    <option value="Libero">Libero</option>-->
+<!--                </select>-->
+
+<!--                <button type="submit" class="btn btn-primary my-1" value="Search">Search</button>-->
+<!--            </form>-->
 
             </form>
 
