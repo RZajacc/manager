@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,6 @@ public class ManagerController {
     public ManagerController(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
-
 
 
     @GetMapping("players")
@@ -47,9 +45,18 @@ public class ManagerController {
         return "views/players";
     }
 
-    @GetMapping("contact")
-    public String contact(){
-        return "views/contact";
+    @GetMapping("register")
+    public String registerPage(@ModelAttribute("registeredPlayer") Player player) {
+        System.out.println("Player name : " + player.getFirst_name());
+        return "views/register";
+    }
+
+    @PostMapping("register")
+    public String processRegistration(@ModelAttribute("registeredPlayer") Player player) {
+
+        playerRepository.save(player);
+
+        return "views/register";
     }
 
 

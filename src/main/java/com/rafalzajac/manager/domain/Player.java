@@ -1,10 +1,7 @@
 package com.rafalzajac.manager.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,9 +10,6 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Getter @Setter
-//@RequiredArgsConstructor
-@NoArgsConstructor
-@AllArgsConstructor
 public class Player {
 
 
@@ -26,6 +20,8 @@ public class Player {
     private String first_name;
     @NotEmpty(message = "You must enter your last name")
     private String last_name;
+    private String email;
+    private String password;
     private String position;
     private int age;
     private int height;
@@ -34,6 +30,29 @@ public class Player {
     private int block_height;
     private String current_club;
     private String contract_expires;
+
+    public Player() {}
+
+    public Player(@NotEmpty(message = "You must enter your first name") String first_name, @NotEmpty(message = "You must enter your last name") String last_name, String email, String password) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Player(@NotEmpty(message = "You must enter your first name") String first_name, @NotEmpty(message = "You must enter your last name") String last_name, String position, int age, int height, int weight, int spike_height, int block_height, String current_club, String contract_expires) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.position = position;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.spike_height = spike_height;
+        this.block_height = block_height;
+        this.current_club = current_club;
+        this.contract_expires = contract_expires;
+    }
+
 
 
     @Override
