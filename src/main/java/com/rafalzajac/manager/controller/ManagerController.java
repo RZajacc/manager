@@ -47,52 +47,22 @@ public class ManagerController {
 
     @GetMapping("register")
     public String registerPage(@ModelAttribute("registeredPlayer") Player player) {
-        System.out.println("Player name : " + player.getFirst_name());
         return "views/register";
     }
 
     @PostMapping("register")
     public String processRegistration(@ModelAttribute("registeredPlayer") Player player) {
 
+        //Dodaj komunikat który wyświetli się na stronie jeżeli się powiodło
+        //Być może przekierowanie na strone profilu ale to do przemyslenia
+        //Być może na poczatek bez profilu a w rejestracji komplet danych
+        //Tylko wtedy po co logowanie...
+        String msg = "";
+
         playerRepository.save(player);
 
         return "views/register";
     }
-
-
-
-//    @GetMapping("addplayer")
-//    public String addNewPlayer(Model model) {
-//        Player player = new Player();
-//        model.addAttribute("player", player);
-//        return "addplayer";
-//    }
-
-    // To jakoś trzeba będzie przerobić na rejestrację
-
-    @PostMapping("addplayer")
-    public String process(@ModelAttribute Player player, Model model) {
-
-        String msg = "";
-
-        if (playerRepository.save(player) != null) {
-            msg = "You have successfully added a new player!";
-            model.addAttribute("Message", msg);
-        }
-
-        return "addplayer";
-    }
-
-    // Profil też dopiero do utworzenia
-//    @GetMapping("profile")
-//    public String viewProfile(Model model) {
-//
-//        List<Player> list = (List<Player>) playerRepository.findAll();
-//        model.addAttribute("lastObject", list.get(list.size() - 1));
-//
-//        return "profile";
-//    }
-
 
 
 }

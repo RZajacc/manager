@@ -31,4 +31,14 @@ nav {
     font-size: 18px;
 }
 
+.form-group {
+    width: 20%;
+    margin: auto;
+}
+
+#registerText {
+    text-align: center;
+    margin-top: 25px;
+    font-weight: bold;
+}
 
