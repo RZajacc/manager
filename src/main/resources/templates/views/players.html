@@ -47,17 +47,17 @@
         </tr>
 
         <tr th:each="player : ${players}">
-            <td th:text="${player.id}">dadd</td>
-            <td th:text="${player.first_name}">2525</td>
-            <td th:text="${player.last_name}">sdfs</td>
-            <td th:text="${player.position}">2525</td>
-            <td th:text="${player.age}">dadd</td>
-            <td th:text="${player.height}">2525</td>
-            <td th:text="${player.weight}">sdfs</td>
-            <td th:text="${player.spike_height}">dadd</td>
-            <td th:text="${player.block_height}">2525</td>
-            <td th:text="${player.current_club}" >sdfs</td>
-            <td th:text="${player.contract_expires}">dadd</td>
+            <td th:text="${player.getId()}"></td>
+            <td th:text="${player.getFirst_name()}"></td>
+            <td th:text="${player.getLast_name()}"></td>
+            <td th:text="${player.getPosition()}"></td>
+            <td th:text="${player.getAge()}"></td>
+            <td th:text="${player.getHeight()}"></td>
+            <td th:text="${player.getWeight()}"></td>
+            <td th:text="${player.getSpike_height()}"></td>
+            <td th:text="${player.getBlock_height()}"></td>
+            <td th:text="${player.getCurrent_club()}" ></td>
+            <td th:text="${player.getContract_expires()}" style="text-align: center"></td>
         </tr>
     </table>
 </div>

@@ -42,3 +42,8 @@ nav {
     font-weight: bold;
 }
 
+#registerMessage {
+    color: red;
+    font-weight: bold;
+}
+
