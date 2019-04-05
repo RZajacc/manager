@@ -2,15 +2,22 @@ package com.rafalzajac.manager.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import java.util.Arrays;
+import java.util.Collection;
 
 
 @Entity
 @Getter @Setter
-public class Player {
+public class Player implements UserDetails {
 
 
     @Id
@@ -20,8 +27,11 @@ public class Player {
     private String first_name;
     @NotEmpty(message = "You must enter your last name")
     private String last_name;
+    private String username;
     private String email;
     private String password;
+
+
     private String position;
     private int age;
     private int height;
@@ -33,7 +43,8 @@ public class Player {
 
     public Player() {}
 
-    public Player(@NotEmpty(message = "You must enter your first name") String first_name, @NotEmpty(message = "You must enter your last name") String last_name, String email, String password) {
+    public Player(String username, @NotEmpty(message = "You must enter your first name") String first_name, @NotEmpty(message = "You must enter your last name") String last_name, String email, String password) {
+        this.username = username;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
@@ -53,6 +64,35 @@ public class Player {
         this.contract_expires = contract_expires;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public Player toUser(PasswordEncoder passwordEncoder) {
+        return new Player(
+                username, first_name, last_name, email, passwordEncoder.encode(password));
+    }
 
 
     @Override

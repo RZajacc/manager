@@ -45,30 +45,30 @@ public class ManagerController {
         return "views/players";
     }
 
-    @GetMapping("register")
-    public String registerPage(@ModelAttribute("registeredPlayer") Player player) {
-        return "views/register";
-    }
+//    @GetMapping("register")
+//    public String registerPage(@ModelAttribute("registeredPlayer") Player player) {
+//        return "views/register";
+//    }
 
-    @PostMapping("register")
-    public String processRegistration(@ModelAttribute("registeredPlayer") Player player, Model model) {
-
-        //Dodaj komunikat który wyświetli się na stronie jeżeli się powiodło
-        //Być może przekierowanie na strone profilu ale to do przemyslenia
-        //Być może na poczatek bez profilu a w rejestracji komplet danych
-        //Tylko wtedy po co logowanie...
-        String msg;
-        if (playerRepository.save(player) != null) {
-            msg = "You have successfully registered your account!";
-        }else {
-            msg = "Oops there was some errors during registragion, try again!";
-        }
-
-        model.addAttribute("regMessage", msg);
-
-
-        return "views/register";
-    }
+//    @PostMapping("register")
+//    public String processRegistration(@ModelAttribute("registeredPlayer") Player player, Model model) {
+//
+//        //Dodaj komunikat który wyświetli się na stronie jeżeli się powiodło
+//        //Być może przekierowanie na strone profilu ale to do przemyslenia
+//        //Być może na poczatek bez profilu a w rejestracji komplet danych
+//        //Tylko wtedy po co logowanie...
+//        String msg;
+//        if (playerRepository.save(player) != null) {
+//            msg = "You have successfully registered your account!";
+//        }else {
+//            msg = "Oops there was some errors during registragion, try again!";
+//        }
+//
+//        model.addAttribute("regMessage", msg);
+//
+//
+//        return "views/register";
+//    }
 
 
 }
