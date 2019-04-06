@@ -12,35 +12,25 @@
 
 <div align="center" class="mainBody">
 
-    <h3>Please enter your account details:</h3><br/>
+    <h3 class="topText">Please enter your account details:</h3><br/>
 
-    <form class="form-horizontal" th:action="@{/login}" method="post">
-
-        <div class="form-group">
-            <label for="username" class="col-sm-3 control-label">User name:</label>
-            <div class="col-sm-7">
-                <input type="text" class="form-control" id="username" name="username">
-            </div>
+    <form method="POST" th:action="@{/login}"  id="loginForm">
+        <div class="form-group text-center">
+            <label for="UserName">User name:</label>
+            <input type="text" class="form-control" id="userName" name="username" aria-describedby="emailHelp" placeholder="Enter user name">
+            <br/>
+        </div>
+        <div class="form-group text-center">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+        <div class="text-center" style="margin-top: 15px">
+            <button type="submit" class="btn btn-primary">Log in</button>
         </div>
 
-        <div class="form-group">
-            <label for="password" class="col-sm-3 control-label">Password:</label>
-            <div class="col-sm-7">
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-offset-1 col-sm-10">
-                <button type="submit" class="btn btn-default">Submit</button>
-            </div>
-        </div>
-
-
-        <div th:if="${param.error}">
-            Invalid username and password.
-        </div>
-
+                <div th:if="${param.error}">
+                    Invalid username and password.
+                </div>
     </form>
 </div>
 

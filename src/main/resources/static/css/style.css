@@ -36,14 +36,19 @@ nav {
     margin: auto;
 }
 
-#registerText {
+.topText {
     text-align: center;
     margin-top: 25px;
     font-weight: bold;
 }
 
-#registerMessage {
-    color: red;
+#loginForm {
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+#registerForm {
+    margin-top: 50px;
     font-weight: bold;
 }
 
