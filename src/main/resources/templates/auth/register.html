@@ -8,7 +8,7 @@
 <ul th:replace="layouts/mainlayout :: nav"/>
 
 <h3 class="topText">Please fill the form to register your account:</h3>
-
+<h5 class="topText">Start with information about your account:</h5>
 <form method="POST" th:action="@{/register}" id="registerForm" th:object="${registeredPlayer}">
     <div class="form-group text-center">
         <label for="UserName">User name:</label>
@@ -45,6 +45,72 @@
               th:if="${#fields.hasErrors('password')}"
               th:errors="*{password}">Not enough letters</span>
     </div>
+    <br/>
+    <hr>
+    <h5 class="topText">Please provide information describing you as a player:</h5>
+    <div class="form-group text-center">
+        <label for="Position">Position:</label>
+        <select id="Position" class="form-control" th:field="*{position}">
+            <option value="Setter">Setter</option>
+            <option value="Wing Spiker">Wing Spiker</option>
+            <option value="Middle Blocker">Middle Blocker</option>
+            <option value="Opposite">Opposite</option>
+            <option value="Libero">Libero</option>
+        </select>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('position')}"
+              th:errors="*{position}">Not enough letters</span>
+    </div>
+    <div class="form-group text-center">
+        <label for="Age">Enter your age:</label>
+        <input type="text" class="form-control" id="Age" aria-describedby="emailHelp" th:field="*{age}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('age')}"
+              th:errors="*{age}">Not enough letters</span>
+    </div>
+    <div class="form-group text-center">
+        <label for="Height">Enter your height:</label>
+        <input type="text" class="form-control" id="Height" aria-describedby="emailHelp" th:field="*{height}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('height')}"
+              th:errors="*{height}">Not enough letters</span>
+    </div>
+    <div class="form-group text-center">
+        <label for="Weight">Enter your weight:</label>
+        <input type="text" class="form-control" id="Weight" aria-describedby="emailHelp" th:field="*{weight}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('weight')}"
+              th:errors="*{weight}">Not enough letters</span>
+    </div>
+    <div class="form-group text-center">
+        <label for="SpikeHeight">Enter your spike height:</label>
+        <input type="text" class="form-control" id="SpikeHeight" aria-describedby="emailHelp" th:field="*{spike_height}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('spike_height')}"
+              th:errors="*{spike_height}">Not enough letters</span>
+    </div>
+    <div class="form-group text-center">
+        <label for="BlockHeight">Enter your block height:</label>
+        <input type="text" class="form-control" id="BlockHeight" aria-describedby="emailHelp" th:field="*{block_height}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('block_height')}"
+              th:errors="*{block_height}">Not enough letters</span>
+    </div>
+    <div class="form-group text-center">
+        <label for="Current club">Enter your current club:</label>
+        <input type="text" class="form-control" id="Current club" aria-describedby="emailHelp" placeholder="Enter current club" th:field="*{current_club}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('current_club')}"
+              th:errors="*{current_club}">Not enough letters</span>
+    </div>
+    <div class="form-group text-center">
+        <label for="ContractExpires">Enter your contract expiration date:</label>
+        <input type="text" class="form-control" id="ContractExpires" aria-describedby="emailHelp" placeholder="Enter contract expiration date" th:field="*{contract_expires}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('contract_expires')}"
+              th:errors="*{contract_expires}">Not enough letters</span>
+    </div>
+
     <div class="text-center" style="margin-top: 15px">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

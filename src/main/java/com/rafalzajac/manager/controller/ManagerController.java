@@ -21,6 +21,7 @@ public class ManagerController {
 
     private final PlayerRepository playerRepository;
 
+
     public ManagerController(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
@@ -56,16 +57,6 @@ public class ManagerController {
         model.addAttribute("loggedUser", loggedUser);
         return "views/profile";
     }
-
-    @PostMapping("/profile")
-    public String updateProfile(@AuthenticationPrincipal UserDetails userDetails, Model model, @ModelAttribute("toUpdate")Player player) {
-        Player toUpdate = playerRepository.findByUsername(userDetails.getUsername());
-        //model.addAttribute("toUpdate", toUpdate);
-        //player.setUsername(toUpdate.getUsername());
-        playerRepository.save(player);
-        return "redirect:/info/profile";
-    }
-
 
 }
 

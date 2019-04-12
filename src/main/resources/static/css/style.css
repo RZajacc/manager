@@ -57,4 +57,20 @@ nav {
     font-weight: normal;
 }
 
+.profile {
+    width: 60%;
+    margin: auto;
+}
+
+.profileHeader {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.accountInfo{
+    width: 50%;
+    margin: auto;
+}
+
 
