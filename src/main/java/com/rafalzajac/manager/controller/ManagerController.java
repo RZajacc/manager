@@ -1,19 +1,22 @@
 package com.rafalzajac.manager.controller;
 
+
 import com.rafalzajac.manager.domain.Player;
 import com.rafalzajac.manager.domain.Position;
 import com.rafalzajac.manager.repositories.PlayerRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
-
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Controller
 @Slf4j
+@RequestMapping("/info")
 public class ManagerController {
 
     private final PlayerRepository playerRepository;
@@ -23,7 +26,7 @@ public class ManagerController {
     }
 
 
-    @GetMapping("players")
+    @GetMapping("/players")
     public String viewPlayers(Model model, @ModelAttribute("SelectedPosition")Position position) {
 
         List<Position> positions = new ArrayList<>();
@@ -47,9 +50,20 @@ public class ManagerController {
         return "views/players";
     }
 
-    @GetMapping("profile")
-    public String profile() {
+    @GetMapping("/profile")
+    public String profile(@AuthenticationPrincipal UserDetails userDetails, Model model, @ModelAttribute("toUpdate")Player player) {
+        Player loggedUser = playerRepository.findByUsername(userDetails.getUsername());
+        model.addAttribute("loggedUser", loggedUser);
         return "views/profile";
+    }
+
+    @PostMapping("/profile")
+    public String updateProfile(@AuthenticationPrincipal UserDetails userDetails, Model model, @ModelAttribute("toUpdate")Player player) {
+        Player toUpdate = playerRepository.findByUsername(userDetails.getUsername());
+        //model.addAttribute("toUpdate", toUpdate);
+        //player.setUsername(toUpdate.getUsername());
+        playerRepository.save(player);
+        return "redirect:/info/profile";
     }
 
 

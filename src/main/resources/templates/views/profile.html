@@ -9,6 +9,68 @@
 
 
 
+<div>
+    <p th:text="${loggedUser.getUsername()}"></p>
+    <p th:text="${loggedUser.getFirst_name()}"></p>
+    <p th:text="${loggedUser.getLast_name()}"></p>
+    <p th:text="${loggedUser.getEmail()}"></p>
+    <p th:text="${loggedUser.getPassword()}"></p>
+</div>
+
+<!--<form method="POST" th:action="@{/profile}" th:object="${toUpdate}">-->
+<!--    <div class="form-group text-center">-->
+<!--        <label for="Age">Enter your age</label>-->
+<!--        <input type="text" class="form-control" id="Age" aria-describedby="emailHelp" placeholder="Enter your age" th:field="*{age}">-->
+<!--    </div>-->
+<!--    <div class="form-group text-center">-->
+<!--        <label for="Height">Enter your height:</label>-->
+<!--        <input type="text" class="form-control" id="Height" aria-describedby="emailHelp" placeholder="Enter your height" th:field="*{height}">-->
+<!--    </div>-->
+<!--    <div class="form-group text-center">-->
+<!--        <label for="Weight">Enter your weight:</label>-->
+<!--        <input type="text" class="form-control" id="Weight" aria-describedby="emailHelp" placeholder="Enter your weight:" th:field="*{weight}">-->
+<!--    </div>-->
+<!--    <div class="form-group text-center">-->
+<!--        <label for="SpikeHeight">Enter your spike height:</label>-->
+<!--        <input type="text" class="form-control" id="SpikeHeight" aria-describedby="emailHelp" placeholder="Enter your spike height:" th:field="*{spike_height}">-->
+<!--    </div>-->
+<!--    <div class="form-group text-center">-->
+<!--        <label for="BlockHeight">Enter your block height:</label>-->
+<!--        <input type="text" class="form-control" id="BlockHeight" placeholder="Enter your block height:" th:field="*{block_height}">-->
+<!--    </div>-->
+<!--    <div class="text-center" style="margin-top: 15px">-->
+<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--    </div>-->
+
+<!--</form>-->
+
+<form method="POST" th:action="@{/info/profile}" id="registerForm" th:object="${toUpdate}">
+    <div class="form-group text-center">
+        <label for="UserName">User name:</label>
+        <input type="text" class="form-control" id="UserName" aria-describedby="emailHelp" placeholder="Enter first name" th:field="*{username}">
+    </div>
+    <div class="form-group text-center">
+        <label for="FirstName">First name:</label>
+        <input type="text" class="form-control" id="FirstName" aria-describedby="emailHelp" placeholder="Enter first name" th:field="*{first_name}">
+    </div>
+    <div class="form-group text-center">
+        <label for="LastName">Last name:</label>
+        <input type="text" class="form-control" id="LastName" aria-describedby="emailHelp" placeholder="Enter last name" th:field="*{last_name}">
+    </div>
+    <div class="form-group text-center">
+        <label for="InputEmail1">Email address:</label>
+        <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}">
+    </div>
+    <div class="form-group text-center">
+        <label for="InputPassword1">Password:</label>
+        <input type="password" class="form-control" id="InputPassword1" placeholder="Password" th:field="*{password}">
+    </div>
+    <div class="text-center" style="margin-top: 15px">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+</form>
+
 <footer th:replace="layouts/mainlayout :: footer"/>
 
 </body>

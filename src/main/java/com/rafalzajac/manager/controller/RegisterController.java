@@ -1,15 +1,16 @@
 package com.rafalzajac.manager.controller;
 
-
 import com.rafalzajac.manager.domain.Player;
 import com.rafalzajac.manager.repositories.PlayerRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.support.SessionStatus;
+import javax.validation.Valid;
+
 
 @Controller
 @RequestMapping("/register")
@@ -29,8 +30,10 @@ public class RegisterController {
     }
 
     @PostMapping
-    public String processRegistration(@ModelAttribute("registeredPlayer") Player player) {
-
+    public String processRegistration(@Valid @ModelAttribute("registeredPlayer") Player player, Errors errors) {
+        if(errors.hasErrors()){
+            return "auth/register";
+        }
         playerRepo.save(player.toUser(passwordEncoder));
         return "redirect:/login";
     }

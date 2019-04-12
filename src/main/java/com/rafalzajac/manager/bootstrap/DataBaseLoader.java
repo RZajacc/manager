@@ -2,11 +2,13 @@ package com.rafalzajac.manager.bootstrap;
 
 import com.rafalzajac.manager.domain.Player;
 import com.rafalzajac.manager.repositories.PlayerRepository;
-import org.aspectj.apache.bcel.util.Play;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+
 @Component
+@Profile("dev")
 public class DataBaseLoader implements CommandLineRunner {
 
     private PlayerRepository playerRepository;

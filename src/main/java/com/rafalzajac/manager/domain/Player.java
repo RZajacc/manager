@@ -3,17 +3,13 @@ package com.rafalzajac.manager.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-import java.util.Arrays;
-import java.util.Collection;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -23,12 +19,16 @@ public class Player {
 
 
     //Data required for registration
+    @NotNull
+    @Size(min = 3, message = "You must enter your username and it should be at least 3 charaters long!")
     private String username;
-    @NotEmpty(message = "You must enter your first name")
+    @NotEmpty(message = "You must enter your first name!")
     private String first_name;
-    @NotEmpty(message = "You must enter your last name")
+    @NotEmpty(message = "You must enter your last name!")
     private String last_name;
+    @NotEmpty(message = "You must enter email adress!")
     private String email;
+    @NotEmpty(message = "You must enter password!")
     private String password;
 
     //All other data describing player
@@ -67,6 +67,8 @@ public class Player {
         this.current_club = current_club;
         this.contract_expires = contract_expires;
     }
+
+
 
     // Method saving player after registration and encoding password
     public Player toUser(PasswordEncoder passwordEncoder) {

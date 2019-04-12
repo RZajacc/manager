@@ -52,3 +52,9 @@ nav {
     font-weight: bold;
 }
 
+.validationError {
+    color: red;
+    font-weight: normal;
+}
+
+
