@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Controller responsible for views describing in some way data on web pate like players list, and personal
+ * players profile
+ */
 @Controller
 @Slf4j
 @RequestMapping("/info")
@@ -21,12 +24,23 @@ public class ManagerController {
 
     private final PlayerRepository playerRepository;
 
-
+    /**
+     * Constructor for player repository
+     * @param playerRepository
+     */
     public ManagerController(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
 
-
+    /**
+     * Method first declares a list of players positions, and populates it, then adds it to model for use in players
+     * view. Then it simply compare data from the form, if position is not selected or "All" is chosen it shows all
+     * players stored in data base. If anything else is selected it gets selection and shows players by only chosen
+     * position on court
+     * @param model
+     * @param position
+     * @return
+     */
     @GetMapping("/players")
     public String viewPlayers(Model model, @ModelAttribute("SelectedPosition")Position position) {
 
@@ -51,8 +65,16 @@ public class ManagerController {
         return "views/players";
     }
 
+    /**
+     * Method gets information about logged user from UserDetails, then player repository search for players in the data
+     * base based on user name obained form current user and assings data to loggedUser. Next it adds loggedUser to the
+     * model and all relevant inforation from it is viewed in profile view.
+     * @param userDetails
+     * @param model
+     * @return
+     */
     @GetMapping("/profile")
-    public String profile(@AuthenticationPrincipal UserDetails userDetails, Model model, @ModelAttribute("toUpdate")Player player) {
+    public String profile(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         Player loggedUser = playerRepository.findByUsername(userDetails.getUsername());
         model.addAttribute("loggedUser", loggedUser);
         return "views/profile";

@@ -4,7 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-
+/**
+ * Class responsible for simple views performing only get request and not doing anything than returning a view like
+ * home page, contact page, and login page.
+ */
 @Controller
 public class WebConfig implements WebMvcConfigurer {
 

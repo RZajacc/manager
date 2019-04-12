@@ -9,6 +9,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 
+/**
+ * Custom implementation of user details service. First it finds player in data base by its user name and throws
+ * error if there is none. Returns user details as a MyUserPrincipal class.
+ */
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 

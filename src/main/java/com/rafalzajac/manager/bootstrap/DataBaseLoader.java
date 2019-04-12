@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-
+/**
+ * This class is active only when you choose profile "dev" in application properties as active.
+ */
 @Component
 @Profile("dev")
 public class DataBaseLoader implements CommandLineRunner {
@@ -15,11 +17,21 @@ public class DataBaseLoader implements CommandLineRunner {
     private PlayerRepository playerRepository;
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * Constructor for data repository and BCrypt password encoder declared as a bean in security config
+     * @param playerRepository
+     * @param passwordEncoder
+     */
     public DataBaseLoader(PlayerRepository playerRepository, PasswordEncoder passwordEncoder) {
         this.playerRepository = playerRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
+    /**
+     * Populating data base with some initial data
+     * @param args
+     * @throws Exception
+     */
     @Override
     public void run(String... args) throws Exception {
 

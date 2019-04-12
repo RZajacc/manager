@@ -7,7 +7,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Arrays;
 import java.util.Collection;
 
-
+/**
+ * Class defining principal with implementation of user details methods. Sets almost everything to true since I'm not
+ * checking account expiration or other values anywhere. It only returns provided user name and password.
+ */
 public class MyUserPrincipal implements UserDetails {
 
     private Player player;
