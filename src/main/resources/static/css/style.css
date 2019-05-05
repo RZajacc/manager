@@ -1,13 +1,3 @@
-.description {
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-top: 20px;
-    text-align: justify;
-}
-
-#contact {
-    text-align: center;
-}
 
 footer {
     background-color: #f2f2f2;
@@ -31,15 +21,8 @@ nav {
     font-size: 18px;
 }
 
-.form-group {
-    width: 20%;
-    margin: auto;
-}
-
-.topText {
+#contact {
     text-align: center;
-    margin-top: 25px;
-    font-weight: bold;
 }
 
 #loginForm {
@@ -49,6 +32,24 @@ nav {
 
 #registerForm {
     margin-top: 50px;
+    font-weight: bold;
+}
+
+.description {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.form-group {
+    width: 20%;
+    margin: auto;
+}
+
+.topText {
+    text-align: center;
+    margin-top: 25px;
     font-weight: bold;
 }
 

@@ -73,6 +73,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers("/profile").access("hasRole('ROLE_USER')")
                     .antMatchers("/", "/**").access("permitAll()")
 
+                // ***** added only to allow h2-console to work *****
+                .and()
+                    .csrf().disable()
+                    .headers().frameOptions().disable()
+                // **************************************************
+
                 .and()
                 .formLogin()
                 .loginPage("/login")
