@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -44,13 +45,9 @@ public class ManagerController {
     @GetMapping("/players")
     public String viewPlayers(Model model, @ModelAttribute("SelectedPosition")Position position) {
 
-        List<Position> positions = new ArrayList<>();
-        positions.add(new Position("All"));
-        positions.add(new Position("Setter"));
-        positions.add(new Position("Wing Spiker"));
-        positions.add(new Position("Opposite"));
-        positions.add(new Position("Middle Blocker"));
-        positions.add(new Position("Libero"));
+        List<Position> positions = Arrays.asList(new Position("All"), new Position("Setter"), new Position("Wing Spiker"),
+                                                 new Position("Opposite"), new Position("Middle Blocker"), new Position("Libero"));
+
 
         model.addAttribute("positions", positions);
 
